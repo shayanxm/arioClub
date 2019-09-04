@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#64b5f6"
     tools:context=".ui.Login.LogInFragment">
 
 
@@ -61,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password_et" />
 
     <TextView
-        android:id="@+id/sign_up_btn"
+        android:id="@+id/go_to_sign_up_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

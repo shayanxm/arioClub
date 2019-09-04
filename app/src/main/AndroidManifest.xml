@@ -4,7 +4,7 @@
     package="com.example.shayanmoradi.arioclub">
 
     <application
-
+        android:name=".database.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,13 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Login.LoginActivity" />
+        <activity android:name=".ui.Login.LoginActivity"></activity>
         <activity android:name=".ui.SingleFragmentActivity" />
         <activity
             android:name=".ui.signup.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.mainpage.MainPageActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.mainpage.MainPageActivity" />
+        <activity android:name=".ui.patientmainpage.PatientMainPageActivity"></activity>
     </application>
 
 </manifest>
