@@ -16,8 +16,8 @@ import com.example.shayanmoradi.arioclub.database.DoctorLab;
 import com.example.shayanmoradi.arioclub.database.PatientLab;
 import com.example.shayanmoradi.arioclub.model.users.Doctor;
 import com.example.shayanmoradi.arioclub.model.users.Patient;
-import com.example.shayanmoradi.arioclub.ui.mainpage.MainPageActivity;
-import com.example.shayanmoradi.arioclub.ui.patientmainpage.PatientMainPageActivity;
+import com.example.shayanmoradi.arioclub.ui.docside.searchpaient.SearchPaientActivity;
+import com.example.shayanmoradi.arioclub.ui.patient.patientmainpage.PatientMainPageActivity;
 import com.example.shayanmoradi.arioclub.ui.signup.SignUpActivity;
 
 import androidx.annotation.Nullable;
@@ -32,6 +32,7 @@ import static com.example.shayanmoradi.arioclub.ui.Login.LoginActivity.userTypeC
  * A simple {@link Fragment} subclass.
  */
 public class LogInFragment extends Fragment {
+    //phone name
     @BindView(R.id.phone_et)
     EditText phoneEt;
     @BindView(R.id.password_et)
@@ -78,13 +79,13 @@ public class LogInFragment extends Fragment {
             if (mUserTypeCode == 0) {
 
 
-                Doctor doctor = DoctorLab.getInstance(getContext()).getDetail(passEt.getText().toString(), phoneEt.getText().toString());
+                Doctor doctor = DoctorLab.getInstance(getContext()).getDetail(phoneEt.getText().toString(), passEt.getText().toString());
                 Authentication.DoclogInTor(doctor);
-                Toast.makeText(getContext(), doctor.getMPhoneNumber() + "welcome", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(),MainPageActivity.class);
+         Toast.makeText(getContext(), doctor.getMNationalCode() + "welcome", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),SearchPaientActivity.class);
                 startActivity(intent);
             } else {
-                Patient patient = PatientLab.getInstance(getContext()).getDetail(passEt.getText().toString(), phoneEt.getText().toString());
+                Patient patient = PatientLab.getInstance(getContext()).getDetail(phoneEt.getText().toString(), passEt.getText().toString());
                 Authentication.PatientlogInTor(patient);
                 Toast.makeText(getContext(), patient.getMPhoneNumber() + "welcome", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(),PatientMainPageActivity.class);

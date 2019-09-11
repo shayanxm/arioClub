@@ -25,18 +25,13 @@ public class DoctorLab {
         return instance;
     }
 
-    public Doctor getDetail(String phoneNumber, String passWord) {
+    public Doctor getDetail(String name, String nationalCode) {
 
-//                .where(SongDetailsDao.Properties.DetailOfsongName.eq(phoneNumber))
-//                .list();
-//        for (Doctor doctors : doctorList) {
-//            return doctors;
-//        }
-//        return null;
+
 
         List<Doctor> doctorList = detailsDao.queryBuilder()
-                .where(DoctorDao.Properties.MPhoneNumber.eq(phoneNumber))
-           .where(DoctorDao.Properties.Password.eq(passWord))
+                .where(DoctorDao.Properties.MName.eq(name))
+           .where(DoctorDao.Properties.MNationalCode.eq(nationalCode))
                 .list();
         for (Doctor doctors : doctorList) {
             return doctors;

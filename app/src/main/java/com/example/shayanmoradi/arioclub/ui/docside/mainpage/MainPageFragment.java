@@ -1,4 +1,4 @@
-package com.example.shayanmoradi.arioclub.ui.mainpage;
+package com.example.shayanmoradi.arioclub.ui.docside.mainpage;
 
 
 import android.os.Bundle;
@@ -60,7 +60,8 @@ public class MainPageFragment extends Fragment {
             Offer offer = new Offer();
             offer.setMName(mOfferNameEt.getText().toString());
             offer.setMAmount(Double.parseDouble( mOfferOffEt.getText().toString()));
-            OfferLab.getInstance(getActivity()).signDoctorUp(offer);
+
+            OfferLab.getInstance(getActivity()).createBasicOffer(offer);
 
         Toast.makeText(getContext(),  OfferLab.getInstance(getActivity()).getAllOffers().size()+"sdf", Toast.LENGTH_SHORT).show();
     }

@@ -18,14 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Login.LoginActivity"></activity>
+        <activity android:name=".ui.Login.LoginActivity" />
         <activity android:name=".ui.SingleFragmentActivity" />
         <activity
             android:name=".ui.signup.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ui.mainpage.MainPageActivity" />
-        <activity android:name=".ui.patientmainpage.PatientMainPageActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.docside.mainpage.MainPageActivity" />
+        <activity android:name=".ui.patient.patientmainpage.PatientMainPageActivity" />
+        <activity android:name=".ui.docside.searchpaient.SearchPaientActivity" />
+        <activity android:name=".ui.docside.factor.CreateFactorActivity"></activity>
     </application>
 
 </manifest>

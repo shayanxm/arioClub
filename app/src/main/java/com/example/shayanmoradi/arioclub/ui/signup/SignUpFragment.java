@@ -73,13 +73,14 @@ public class SignUpFragment extends Fragment {
     void onSignUpClick() {
         if (mUserTypeCode==0) {
             Doctor doc = new Doctor();
-            doc.setPassword(passEt.getText().toString());
-            doc.setMPhoneNumber(phoneNumbEt.getText().toString());
+
+            doc.setMName(phoneNumbEt.getText().toString());
+            doc.setMNationalCode(passEt.getText().toString());
             DoctorLab.getInstance(getActivity()).signDoctorUp(doc);
         }else {
             Patient doc = new Patient();
-            doc.setPassword(passEt.getText().toString());
-            doc.setMPhoneNumber(phoneNumbEt.getText().toString());
+            doc.setMName(phoneNumbEt.getText().toString());
+            doc.setMNationalCode(passEt.getText().toString());
             PatientLab.getInstance(getActivity()).signDoctorUp(doc);
         }
 

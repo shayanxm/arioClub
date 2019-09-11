@@ -25,12 +25,12 @@ public class PatientLab {
         return instance;
     }
 
-    public Patient getDetail(String phoneNumber, String passWord) {
+    public Patient getDetail(String name, String nationalId) {
 
 
         List<Patient> patients = detailsDao.queryBuilder()
-                .where(PatientDao.Properties.MPhoneNumber.eq(phoneNumber))
-              .where(PatientDao.Properties.Password.eq(passWord))
+                .where(PatientDao.Properties.MName.eq(name))
+                .where(PatientDao.Properties.MNationalCode.eq(nationalId))
                 .list();
         for (Patient patient : patients) {
             return patient;
@@ -38,14 +38,46 @@ public class PatientLab {
         return null;
     }
 
-    public void signDoctorUp (Patient patient){
+    public Patient searchPaient(String name, String nationalID) {
+
+        if (name == null||name.equals("")) {
+            List<Patient> patients = detailsDao.queryBuilder()
+                    .where(PatientDao.Properties.MNationalCode.eq(nationalID))
+
+                    .list();
+            for (Patient patient : patients) {
+                return patient;
+            }
+        } else if (nationalID == null||nationalID.equals("")) {
+            List<Patient> patients = detailsDao.queryBuilder()
+                    .where(PatientDao.Properties.MName.eq(name))
+
+                    .list();
+            for (Patient patient : patients) {
+                return patient;
+            }
+        }
+//else if
+
+        List<Patient> patients = detailsDao.queryBuilder()
+                .where(PatientDao.Properties.MName.eq(name))
+                .where(PatientDao.Properties.MNationalCode.eq(nationalID))
+                .list();
+        for (Patient patient : patients) {
+            return patient;
+        }
+        return null;
+    }
+
+    public void signDoctorUp(Patient patient) {
         detailsDao.insert(patient);
     }
 
-    public void update (Patient patient){
+    public void update(Patient patient) {
         detailsDao.update(patient);
     }
-    public void delete (Patient patient){
+
+    public void delete(Patient patient) {
         detailsDao.delete(patient);
     }
 }

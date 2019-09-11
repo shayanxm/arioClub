@@ -6,6 +6,7 @@ import com.example.shayanmoradi.arioclub.model.offers.Offer;
 import com.example.shayanmoradi.arioclub.model.offers.OfferDao;
 import com.example.shayanmoradi.arioclub.model.users.PatientDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OfferLab {
@@ -20,9 +21,18 @@ public class OfferLab {
 
     }
 
+    private OfferLab() {
+
+
+    }
     public static OfferLab getInstance(Context context) {
         if (instance == null)
             instance = new OfferLab(context);
+        return instance;
+    }
+    public static OfferLab getInstance() {
+        if (instance == null)
+            instance = new OfferLab();
         return instance;
     }
 
@@ -38,13 +48,46 @@ public class OfferLab {
         }
         return null;
     }
-    public List<Offer>getAllOffers(){
+//    public List<Offer>getAllOffers(){
+//        List<Offer> offers = detailsDao.queryBuilder()
+//                .list();
+//        return offers;
+//    }
+//
+
+    public List<Offer> getAllOffers() {
+        List<Offer>temp= new ArrayList<>();
         List<Offer> offers = detailsDao.queryBuilder()
+//        List<Address> addressList = detailsDao.queryBuilder()
+                .where(OfferDao.Properties.PaientId.isNull())
+
                 .list();
+        for (Offer offer : offers) {
+            temp.add(offer);
+        }
         return offers;
     }
 
-    public void signDoctorUp (Offer patient){
+    public List<Offer> getPaientBag(Long paietnId) {
+        List<Offer>temp= new ArrayList<>();
+        List<Offer> offers = detailsDao.queryBuilder()
+//        List<Address> addressList = detailsDao.queryBuilder()
+                .where(OfferDao.Properties.PaientId.eq(paietnId))
+
+                .list();
+        for (Offer offer : offers) {
+            temp.add(offer);
+        }
+        return offers;
+    }
+
+
+
+    public void createBasicOffer (Offer patient){
+        detailsDao.insert(patient);
+    }
+
+    public void userBuysOffer (Offer patient){
         detailsDao.insert(patient);
     }
 
