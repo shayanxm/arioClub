@@ -35,6 +35,7 @@ public class SignUpFragment extends Fragment {
     EditText phoneNumbEt;
     @BindView(R.id.pass_et)
     EditText passEt;
+    @BindView(R.id.national_code_et)EditText nationalCodeEt;
     @BindView(R.id.confrim_sign_up_btn)
     Button signUpBtn;
 
@@ -71,23 +72,41 @@ public class SignUpFragment extends Fragment {
 
     @OnClick(R.id.confrim_sign_up_btn)
     void onSignUpClick() {
+
+        //chech empty value
+
+//        if (checkEmptyValue()){
+//            Toast.makeText(getContext(), "فیلد ها را پر کنید", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         if (mUserTypeCode==0) {
+
             Doctor doc = new Doctor();
 
             doc.setMName(phoneNumbEt.getText().toString());
-            doc.setMNationalCode(passEt.getText().toString());
+
+            doc.setMNationalCode(nationalCodeEt.getText().toString());
+            doc.setPassword(passEt.getText().toString());
             DoctorLab.getInstance(getActivity()).signDoctorUp(doc);
         }else {
-            Patient doc = new Patient();
-            doc.setMName(phoneNumbEt.getText().toString());
-            doc.setMNationalCode(passEt.getText().toString());
-            PatientLab.getInstance(getActivity()).signDoctorUp(doc);
+            Patient patient = new Patient();
+            patient.setMName(phoneNumbEt.getText().toString());
+            patient.setMNationalCode(nationalCodeEt.getText().toString());
+            patient.setPassword(passEt.getText().toString());
+            PatientLab.getInstance(getActivity()).signDoctorUp(patient);
         }
 
         Toast.makeText(getContext(), "ثبت نام انجام شد", Toast.LENGTH_SHORT).show();
         getActivity().finish();
 
 
+    }
+    boolean checkEmptyValue(){
+        boolean b1=!(phoneNumbEt.getText()==null);
+        boolean b2=!(passEt.getText()==null);
+        boolean b3=!(nationalCodeEt.getText()==null);
+
+        return b1&b2&b3;
     }
 
 }

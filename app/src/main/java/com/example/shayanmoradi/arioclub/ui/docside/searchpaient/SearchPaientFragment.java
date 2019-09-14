@@ -39,9 +39,12 @@ public class SearchPaientFragment extends Fragment {
     EditText mPaientNationalIdEt;
     @BindView(R.id.paietn_value_tv)
     TextView paientValueTv;
-    @BindView(R.id.loged_in_name_tv)TextView loggedInNameTv;
-    @BindView(R.id.loged_in_phone_tv)TextView loggedInNationalId;
-Doctor currentDoc;
+    @BindView(R.id.loged_in_name_tv)
+    TextView loggedInNameTv;
+    @BindView(R.id.loged_in_phone_tv)
+    TextView loggedInNationalId;
+    Doctor currentDoc;
+    boolean paietnFound = false;
 
     public SearchPaientFragment() {
         // Required empty public constructor
@@ -50,7 +53,7 @@ Doctor currentDoc;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-  currentDoc= Authentication.getCurrentDoc();
+        currentDoc = Authentication.getCurrentDoc();
 
     }
 
@@ -60,8 +63,8 @@ Doctor currentDoc;
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_paient, container, false);
         ButterKnife.bind(this, view);
-      loggedInNameTv.setText(currentDoc.getMName());
-        loggedInNationalId.setText(currentDoc.getMNationalCode()+"");
+        loggedInNameTv.setText(currentDoc.getMName());
+        loggedInNationalId.setText(currentDoc.getMNationalCode() + "");
 
         return view;
     }
@@ -75,15 +78,22 @@ Doctor currentDoc;
         if (currentPatient == null) {
             Toast.makeText(getContext(), "پیدا نشد", Toast.LENGTH_SHORT).show();
         } else {
+            paietnFound = true;
             mPaietnNameEt.setText(currentPatient.getMName());
             mPaientNationalIdEt.setText(currentPatient.getMNationalCode());
             paientValueTv.setText(calcPaientValue() + "");
         }
 
     }
-    @OnClick(R.id.paient_create_factor_btn)void onCreateFactor(){
-        Intent intent = new Intent(getContext(),CreateFactorActivity.class);
-        startActivity(intent);
+
+    @OnClick(R.id.paient_create_factor_btn)
+    void onCreateFactor() {
+        if (paietnFound) {
+            Intent intent = new Intent(getContext(), CreateFactorActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(getContext(), "ابتدا بیماری جست و جو کنید", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private double calcPaientValue() {
@@ -95,7 +105,7 @@ Doctor currentDoc;
 
             }
         } catch (Exception e) {
-            Log.e("test","list offer a bimar khaliye");
+            Log.e("test", "list offer a bimar khaliye");
             return 0;
 
         }
@@ -103,7 +113,9 @@ Doctor currentDoc;
 
         return totalyValue;
     }
-    @OnClick(R.id.paient_create_factor_btn)void onFactorClick(){
+
+    @OnClick(R.id.paient_create_factor_btn)
+    void onFactorClick() {
 
     }
 }

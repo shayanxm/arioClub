@@ -25,12 +25,12 @@ public class PatientLab {
         return instance;
     }
 
-    public Patient getDetail(String name, String nationalId) {
+    public Patient getDetail(String nationalId, String password) {
 
 
         List<Patient> patients = detailsDao.queryBuilder()
-                .where(PatientDao.Properties.MName.eq(name))
                 .where(PatientDao.Properties.MNationalCode.eq(nationalId))
+                .where(PatientDao.Properties.Password.eq(password))
                 .list();
         for (Patient patient : patients) {
             return patient;

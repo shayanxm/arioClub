@@ -67,6 +67,31 @@ public class LogInFragment extends Fragment {
         ButterKnife.bind(this, view);
         Toast.makeText(getActivity(), mUserTypeCode + "user type", Toast.LENGTH_SHORT).show();
 
+        //tempppp
+//        Product product= new Product();
+//        product.setMNAme("test");
+//        product.setMCode("1");
+//        product.setMPrice(124.3);
+//
+//        Product product2= new Product();
+//        product.setMNAme("test");
+//        product.setMCode("2");
+//        product.setMPrice(124.3);
+//
+//        Product product3= new Product();
+//        product.setMNAme("test");
+//        product.setMCode("3");
+//        product.setMPrice(124.3);
+//        ProductLab.getInstance().createBasicProduct(product);
+//
+//        ProductLab.getInstance().createBasicProduct(product2);
+//        ProductLab.getInstance().createBasicProduct(product3);
+//
+//
+
+
+        ////////
+
         return view;
     }
 
