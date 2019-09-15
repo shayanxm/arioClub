@@ -11,25 +11,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.welcome.WelcomeActivity"
+        <activity
+            android:name=".ui.welcome.WelcomeActivity"
             android:screenOrientation="portrait">
 
+        </activity>
+        <activity
+            android:name=".ui.Login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SingleFragmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.docside.mainpage.MainPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.patient.patientmainpage.PatientMainPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.docside.searchpaient.SearchPaientActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.docside.factor.CreateFactorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Login.LoginActivity" />
-        <activity android:name=".ui.SingleFragmentActivity" />
-        <activity
-            android:name=".ui.signup.SignUpActivity"
-            android:label="@string/title_activity_sign_up"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.docside.mainpage.MainPageActivity" />
-        <activity android:name=".ui.patient.patientmainpage.PatientMainPageActivity" />
-        <activity android:name=".ui.docside.searchpaient.SearchPaientActivity" />
-        <activity android:name=".ui.docside.factor.CreateFactorActivity"></activity>
     </application>
 
 </manifest>

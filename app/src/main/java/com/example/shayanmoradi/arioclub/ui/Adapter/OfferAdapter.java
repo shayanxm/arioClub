@@ -1,11 +1,13 @@
 package com.example.shayanmoradi.arioclub.ui.Adapter;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shayanmoradi.arioclub.R;
 import com.example.shayanmoradi.arioclub.controller.authentication.Authentication;
@@ -22,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> {
     Offer currentOffer;
-
+Context currentContext;
     public interface OnUserAdapter {
         void onUserClicked(Offer user);
     }
@@ -30,10 +32,12 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
     private List<Offer> muserList;
     private OnUserAdapter mListener;
 
-    public OfferAdapter(OnUserAdapter listener) {
+    public OfferAdapter(OnUserAdapter listener, Context context) {
         mListener = listener;
         muserList = new ArrayList<>();
+        currentContext=context;
     }
+
 
     public void setItems(List<Offer> userLIst) {
         muserList = userLIst;
@@ -54,11 +58,12 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
         viewHolder.setUserName(offer.getMName());
         viewHolder.setOfferPrice(offer.getMAmount() + "");
         viewHolder.setOnClickListener(offer);
-        viewHolder.buyOfferBtn.setOnClickListener(new View.OnClickListener() {
+        viewHolder.buyOfferIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewHolder.buyOfferb(offer);
                 Log.e("test","wod");
+                Toast.makeText(currentContext, offer.getMName()+" به سبد خرید اضافه شد ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -80,8 +85,9 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
         TextView offerNameTV;
         @BindView(R.id.offer_price)
         TextView offerPriceTV;
-        @BindView(R.id.offer_buy_btn)
-        Button buyOfferBtn;
+
+        @BindView(R.id.add_to_bag_btn)
+        ImageView buyOfferIv;
 
 //        @OnClick(R.id.offer_buy_btn)
 //        void buyOffer() {

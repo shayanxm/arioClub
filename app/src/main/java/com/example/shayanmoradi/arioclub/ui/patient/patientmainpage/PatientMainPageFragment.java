@@ -58,13 +58,11 @@ public class PatientMainPageFragment extends Fragment implements OfferAdapter.On
         loggedInNationalIdTv.setText(currentPatient.getMNationalCode()+"");
 
         offersRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        offerAdapter = new OfferAdapter(this);
+        offerAdapter = new OfferAdapter(this,getContext());
 
         offerAdapter.setItems(OfferLab.getInstance(getContext()).getAllOffers());
 
         offersRv.setAdapter(offerAdapter);
-
-
         return view;
     }
 
@@ -77,11 +75,8 @@ public class PatientMainPageFragment extends Fragment implements OfferAdapter.On
     @OnClick(R.id.show_bag_iv)
     void onBagClick() {
         if (bagToggle) {
-
-            offerAdapter = new OfferAdapter(this);
-
+            offerAdapter = new OfferAdapter(this,getContext());
             offerAdapter.setItems(OfferLab.getInstance(getContext()).getPaientBag(Authentication.getCurrentPAtient().getId()));
-
             offersRv.setAdapter(offerAdapter);
             Toast.makeText(getContext(), "سبد خرید", Toast.LENGTH_SHORT).show();
         } else {

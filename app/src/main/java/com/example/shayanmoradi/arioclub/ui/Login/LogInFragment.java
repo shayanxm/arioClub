@@ -65,7 +65,7 @@ public class LogInFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_logoin, container, false);
         ButterKnife.bind(this, view);
-        Toast.makeText(getActivity(), mUserTypeCode + "user type", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getActivity(), mUserTypeCode + "user type", Toast.LENGTH_SHORT).show();
 
         //tempppp
 //        Product product= new Product();

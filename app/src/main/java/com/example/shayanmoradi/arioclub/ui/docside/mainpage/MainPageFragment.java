@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shayanmoradi.arioclub.R;
 import com.example.shayanmoradi.arioclub.controller.authentication.Authentication;
@@ -63,7 +62,7 @@ public class MainPageFragment extends Fragment {
 
             OfferLab.getInstance(getActivity()).createBasicOffer(offer);
 
-        Toast.makeText(getContext(),  OfferLab.getInstance(getActivity()).getAllOffers().size()+"sdf", Toast.LENGTH_SHORT).show();
+
     }
 
 }
